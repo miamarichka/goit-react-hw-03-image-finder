@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
 import { getData } from "api/fetchData";
 import { Searchbar } from "../Searchbar/Searchbar";
