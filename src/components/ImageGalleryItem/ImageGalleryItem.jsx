@@ -1,5 +1,5 @@
 import { Modal } from "components/Modal/Modal";
-import {ImageGalleryItemImage, ImageGalleryItemStyled} from './ImageGalleryItem.styled'
+import { ImageGalleryItemImage, ImageGalleryItemStyled } from './ImageGalleryItem.styled'
 import { useEffect, useState } from "react";
 
 export const ImageGalleryItem = ({ itemData }) => {
@@ -11,12 +11,11 @@ export const ImageGalleryItem = ({ itemData }) => {
 
   const clickHandlerBackdrop = () => {
     setShowModal(false)
-    console.log('click back')
   }
 
   const onEscapeClick = (e) => {
-    if(e.code === 'Escape')
-    setShowModal(false)
+    if (e.code === 'Escape')
+      setShowModal(false)
   }
 
   useEffect(() => {
@@ -25,21 +24,21 @@ export const ImageGalleryItem = ({ itemData }) => {
       window.removeEventListener('keydown', onEscapeClick);
     };
   }, [showModal])
-  
+
 
   const { webformatURL, largeImageURL } = itemData;
-    return (
-      <ImageGalleryItemStyled
-        className="gallery-item"
-        onClick={clickHandlerPreview}
-      >
-        <ImageGalleryItemImage src={webformatURL} alt="" />
-        {showModal && (
-          <Modal
+  return (
+    <ImageGalleryItemStyled
+      className="gallery-item"
+      onClick={clickHandlerPreview}
+    >
+      <ImageGalleryItemImage src={webformatURL} alt="" />
+      {showModal && (
+        <Modal
           image={largeImageURL}
           onBackdropClick={clickHandlerBackdrop}
-          />
-        )}
-      </ImageGalleryItemStyled>
-    );
+        />
+      )}
+    </ImageGalleryItemStyled>
+  );
 }
