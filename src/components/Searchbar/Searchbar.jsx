@@ -10,7 +10,7 @@ import {
 export const Searchbar = ({onSearchSubmit}) => {
   const [query, setQuery] = useState('')
 
-  const SubmitHandler = (e) => {
+  const submitHandler = (e) => {
     e.preventDefault()
     if (!query.trim()) {
       return
@@ -22,7 +22,7 @@ export const Searchbar = ({onSearchSubmit}) => {
       <SearchBarStyled>
         <SearchForm
           className="form"
-          onSubmit={SubmitHandler}
+          onSubmit={submitHandler}
         >
           <SearchFormButton type="submit" className="button">
             <SearchLabel className="button-label">Search</SearchLabel>

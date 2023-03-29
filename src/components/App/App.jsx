@@ -43,7 +43,7 @@ export const App = () => {
     }
   }
 
-  const getPages = () => {
+  const increasePage = () => {
     setPage(prevState => prevState + 1)
   }
   
@@ -51,8 +51,9 @@ export const App = () => {
     if (query === searchQuery) {
       return
     }
-    setQuery(searchQuery)
-    setGallery([])
+    setQuery(searchQuery);
+    setGallery([]);
+    setPage(1);
   }
 
   useEffect(() => {
@@ -68,7 +69,7 @@ export const App = () => {
     <AppStyled>
       <Searchbar onSearchSubmit={getQuery} />
       <ImageGallery gallery={gallery} />
-      {isLoadMore && (<Button onLoadMore={getPages} />)}
+      {isLoadMore && (<Button onLoadMore={increasePage} />)}
     </AppStyled>
   );
 };
