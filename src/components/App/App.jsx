@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { getData } from "api/fetchData";
 import { Searchbar } from "../Searchbar/Searchbar";
 import { ImageGallery } from "../ImageGallery/ImageGallery";
-import {Button} from '../Button/Button'
+import { Button } from '../Button/Button'
 import Notiflix from 'notiflix';
 import { AppStyled } from "./App.styled";
 
@@ -29,7 +29,7 @@ export const App = () => {
         responce.data.hits.length === 12
           ? setIsLoadMore(true)
           : setIsLoadMore(false)
-        
+
         gallery.length
           ? setGallery(prevState => [...prevState, ...responce.data.hits])
           : setGallery(responce.data.hits)
@@ -46,7 +46,7 @@ export const App = () => {
   const increasePage = () => {
     setPage(prevState => prevState + 1)
   }
-  
+
   const getQuery = (searchQuery) => {
     if (query === searchQuery) {
       return
@@ -60,10 +60,8 @@ export const App = () => {
     if (!query.trim()) {
       return
     }
-  getDataFromServer()
+    getDataFromServer()
   }, [page, query])
-  
-
 
   return (
     <AppStyled>
