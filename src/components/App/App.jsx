@@ -26,7 +26,12 @@ export const App = () => {
       const responce = await getData(query, page)
 
       if (responce.data.hits.length) {
-        responce.data.hits.length === 12
+          if (responce.data.totalHits.length === responce.data.hits.length) {
+            setIsLoadMore(false);
+            throw new Error('Sorry, there is no more result');
+        }
+
+        responce.data.hits.length === 12 
           ? setIsLoadMore(true)
           : setIsLoadMore(false)
 
@@ -37,6 +42,7 @@ export const App = () => {
         throw new Error();
       }
     } catch {
+      setIsLoadMore(false)
       Notiflix.Notify.failure('Sorry, there is no result');
     } finally {
       Notiflix.Loading.remove();
